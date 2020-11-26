@@ -37,6 +37,9 @@ public class MoviesList extends AppCompatActivity {
         lang = bundle.getString("selectedItem");
         getData();
         arraylistadpater=new ArrayAdapter(this,android.R.layout.simple_list_item_1,MovieArray);
+        if(MovieArray.size()==0)
+            Toast.makeText(getApplicationContext(),"No Movies To select",Toast.LENGTH_LONG).show();
+
     }
 
     public void getData(){
