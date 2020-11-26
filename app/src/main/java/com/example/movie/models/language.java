@@ -1,12 +1,12 @@
 package com.example.movie.models;
 
-public class Language {
+public class language {
     String language_name;
 
-    public Language(String language_name) {
+    public language(String language_name) {
         this.language_name = language_name;
     }
-    public Language(){
+    public language(){
 
     }
     public String getLanguage_name() {

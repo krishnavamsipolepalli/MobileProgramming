@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.movie.models.Language;
+import com.example.movie.models.language;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -23,7 +23,7 @@ public class MovieLanguage extends AppCompatActivity {
 
     ListView language_list;
     FirebaseFirestore database;
-    ArrayList<String> languageArray;
+    ArrayList<String> languageArray=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +44,9 @@ public class MovieLanguage extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
-
-
                             for(DocumentSnapshot document : task.getResult()){
 
-                                Language language=document.toObject(Language.class);
+                                language language=document.toObject(language.class);
                                 languageArray.add(language.getLanguage_name());
                             }
 
