@@ -26,7 +26,7 @@ public class MovieLanguage extends AppCompatActivity {
     ListView language_list;
     FirebaseFirestore database;
   List<String> languageArray=new ArrayList<String>();
-
+    TextView test;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +34,7 @@ public class MovieLanguage extends AppCompatActivity {
         language_list=findViewById(R.id.LanguageList);
         database=FirebaseFirestore.getInstance();
         getData();
+        //languageArray= Arrays.asList(test.getText().toString().split(","));
        ArrayAdapter arraylistadpater=new ArrayAdapter(this,android.R.layout.simple_list_item_1,languageArray);
        language_list.setAdapter(arraylistadpater);
     }
@@ -46,10 +47,13 @@ public class MovieLanguage extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
+                            String result="";
                             for(DocumentSnapshot document:task.getResult()){
                                 Language lang=document.toObject(Language.class);
+                                result+= lang.getLanguageName()+",";
                                 languageArray.add(lang.getLanguageName().toString());
                             }
+                            test.setText(result);
                         }
 
                     }
