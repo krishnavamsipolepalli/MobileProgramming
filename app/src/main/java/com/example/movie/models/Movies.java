@@ -16,6 +16,11 @@ public class Movies {
         this.date = date;
     }
 
+    public Movies()
+    {
+
+    }
+
     public String getName() {
         return name;
     }
