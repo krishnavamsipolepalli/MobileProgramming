@@ -6,9 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.movie.models.language;
+import com.example.movie.models.Language;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -17,23 +18,28 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MovieLanguage extends AppCompatActivity {
 
     ListView language_list;
     FirebaseFirestore database;
-    ArrayList<String> languageArray=null;
+  List<String> languageArray=new ArrayList<String>();
+    TextView test;
+    String result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_language);
+        test=findViewById(R.id.test_data);
         language_list=findViewById(R.id.LanguageList);
         database=FirebaseFirestore.getInstance();
         getData();
-        ArrayAdapter arraylistadpater=new ArrayAdapter(this,android.R.layout.simple_list_item_1, (List) language_list);
-        language_list.setAdapter(arraylistadpater);
+        languageArray= Arrays.asList(test.getText().toString().split(","));
+       ArrayAdapter arraylistadpater=new ArrayAdapter(this,android.R.layout.simple_list_item_1,languageArray);
+       language_list.setAdapter(arraylistadpater);
     }
 
     public void getData(){
@@ -44,21 +50,22 @@ public class MovieLanguage extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
-                            for(DocumentSnapshot document : task.getResult()){
-
-                                language language=document.toObject(language.class);
-                                languageArray.add(language.getLanguage_name());
+                            String result="";
+                            for(DocumentSnapshot document:task.getResult()){
+                                Language lang=document.toObject(Language.class);
+                                result+= lang.getLanguageName()+",";
                             }
-
+                            test.setText(result);
                         }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getApplicationContext(),"Error. Try Again"+e.getMessage(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });
+
 
     }
 }

@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.movie.models.Movies;
+import com.example.movie.models.Language;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -47,6 +48,7 @@ public class AddMovie extends AppCompatActivity {
                 String date=movieYear.getText().toString();
                 String language=movieLang.getText().toString();
                 addMovie(name,date,rating,language,genre);
+                addLanguage("Spanish");
 
             }
         });
@@ -60,6 +62,24 @@ public class AddMovie extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(getApplicationContext(),"Movie Submitted",Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getApplicationContext(),"Error. Try Again"+e.getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+// testing data
+    public void addLanguage(String name){
+        Language new_lang=new Language(name);
+        database.collection("language")
+                .add(new_lang)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(getApplicationContext(),"Language Submitted",Toast.LENGTH_LONG).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
