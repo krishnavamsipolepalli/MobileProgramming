@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -16,11 +17,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MovieLanguage extends AppCompatActivity {
 
     ListView language_list;
     FirebaseFirestore database;
+    ArrayList<String> languageArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,8 @@ public class MovieLanguage extends AppCompatActivity {
         language_list=findViewById(R.id.LanguageList);
         database=FirebaseFirestore.getInstance();
         getData();
+        ArrayAdapter arraylistadpater=new ArrayAdapter(this,android.R.layout.simple_list_item_1, (List) language_list);
+        language_list.setAdapter(arraylistadpater);
     }
 
     public void getData(){
@@ -39,14 +44,13 @@ public class MovieLanguage extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
-                            ArrayList<String> language_array=null;
+
 
                             for(DocumentSnapshot document : task.getResult()){
 
                                 Language language=document.toObject(Language.class);
-                                language_array.add(language.getLanguage_name());
+                                languageArray.add(language.getLanguage_name());
                             }
-
 
                         }
                     }

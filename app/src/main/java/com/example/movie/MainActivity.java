@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.movie.models.Language;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button addMovieBtn;
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 this.startActivity(intent);
                 break;
             case R.id.View:
-                intent=new Intent(this.getApplicationContext(),AddMovie.class);
+                intent=new Intent(this.getApplicationContext(), Language.class);
                 this.startActivity(intent);
                 break;
 
