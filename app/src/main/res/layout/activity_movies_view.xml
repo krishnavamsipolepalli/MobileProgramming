@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MoviesView">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Movie Details"
+        android:textSize="30dp"
+        android:textColor="#FF9800"
+        android:id="@+id/test_title"
+        android:layout_marginBottom="30dp"
+        ></TextView>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TableRow android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_margin="1dp"
+            android:layout_marginBottom="30dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Movie Name"
+                android:textSize="30dp"
+                android:textColor="#2196F3"
+                android:layout_marginRight="10dp"
+                ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select a Movie"
+                android:textSize="25dp"
+                android:textColor="#555958"
+                android:id="@+id/name"
+                android:layout_marginBottom="10dp"
+                ></TextView>
+        </TableRow>
+
+        <TableRow android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_margin="1dp"
+            android:layout_marginBottom="30dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Genre"
+                android:textSize="30dp"
+                android:textColor="#2196F3"
+                android:layout_marginRight="10dp"
+                ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select a Movie"
+                android:textSize="25dp"
+                android:textColor="#555958"
+                android:id="@+id/genre"
+                android:layout_marginBottom="10dp"
+                ></TextView>
+        </TableRow>
+
+        <TableRow android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_margin="1dp"
+            android:layout_marginBottom="30dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Language"
+                android:textSize="30dp"
+                android:textColor="#2196F3"
+                android:layout_marginRight="10dp"
+                ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select a Movie"
+                android:textSize="25dp"
+                android:textColor="#555958"
+                android:id="@+id/lang"
+                android:layout_marginBottom="10dp"
+                ></TextView>
+        </TableRow>
+
+        <TableRow android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_margin="1dp"
+            android:layout_marginBottom="30dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Release Year"
+                android:textSize="30dp"
+                android:textColor="#2196F3"
+                android:layout_marginRight="10dp"
+                ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select a Movie"
+                android:textSize="25dp"
+                android:textColor="#555958"
+                android:id="@+id/year"
+                android:layout_marginBottom="10dp"
+                ></TextView>
+        </TableRow>
+
+        <TableRow android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_margin="1dp"
+            android:layout_marginBottom="30dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rating /10"
+                android:textSize="30dp"
+                android:textColor="#2196F3"
+                android:layout_marginRight="10dp"
+                ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select a Movie"
+                android:textSize="25dp"
+                android:textColor="#555958"
+                android:id="@+id/rating"
+                android:layout_marginBottom="10dp"
+                ></TextView>
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

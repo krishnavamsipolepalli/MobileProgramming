@@ -3,15 +3,13 @@ package com.example.movie;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.movie.models.Language;
 import com.example.movie.models.Movies;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -23,36 +21,28 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoviesList extends AppCompatActivity {
+public class MoviesView extends AppCompatActivity {
 
-    ListView movie_list;
+    TextView movieName;
+    TextView movieRating;
+    TextView movieLang;
+    TextView movieYear;
+    TextView movieGenre;
+    String movie_name;
     FirebaseFirestore database;
-    String lang="Temp";
-    List<String> MovieArray=new ArrayList<String>();
-    ArrayAdapter arraylistadpater;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movies_list);
-        movie_list=findViewById(R.id.MovieList);
+        setContentView(R.layout.activity_movies_view);
         database=FirebaseFirestore.getInstance();
         Bundle bundle = getIntent().getExtras();
-        lang = bundle.getString("selectedItem");
+        movie_name = bundle.getString("selectedItem");
+        movieName=findViewById(R.id.name);
+        movieRating=findViewById(R.id.rating);
+        movieLang=findViewById(R.id.lang);
+        movieYear=findViewById(R.id.year);
+        movieGenre=findViewById(R.id.genre);
         getData();
-        arraylistadpater=new ArrayAdapter(this,android.R.layout.simple_list_item_1,MovieArray);
-        if(MovieArray.size()==0)
-            Toast.makeText(getApplicationContext(),"No Movies To select",Toast.LENGTH_LONG).show();
-
-        movie_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(getApplicationContext(),MoviesView.class);
-                String selectedItem = (String) arraylistadpater.getItem(position);
-                intent.putExtra("selectedItem", selectedItem);
-                startActivity(intent);
-            }
-        });
-
     }
 
     public void getData(){
@@ -63,14 +53,23 @@ public class MoviesList extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
+                            String name="",genre="",rating="",lang="",year="";
                             for(DocumentSnapshot document:task.getResult()){
                                 Movies movie=document.toObject(Movies.class);
-                                if(movie.getLanguage().equals(lang))
+                                if(movie.getName().equals(movie_name))
                                 {
-                                MovieArray.add(movie.getName().toString());
+                                    name=movie.getName().toString();
+                                    genre=movie.getGenre().toString();
+                                    rating=movie.getRating().toString();
+                                    lang=movie.getLanguage().toString();
+                                    year=movie.getDate().toString();
                                 }
+                                movieName.setText(name);
+                                movieGenre.setText(genre);
+                                movieLang.setText(rating);
+                                movieRating.setText(lang);
+                                movieYear.setText(year);
                             }
-                            movie_list.setAdapter(arraylistadpater);
                         }
 
                     }
