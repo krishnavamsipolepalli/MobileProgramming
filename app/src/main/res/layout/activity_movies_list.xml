@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MovieLanguage">
+    tools:context=".MoviesList">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select a Language"
+        android:text="Select a Movie"
         android:textSize="30dp"
         android:textColor="#2196F3"
         android:id="@+id/test_title"
@@ -18,5 +18,5 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/LanguageList"></ListView>
+        android:id="@+id/MovieList"></ListView>
 </LinearLayout>
