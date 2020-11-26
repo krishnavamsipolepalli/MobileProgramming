@@ -66,8 +66,8 @@ public class MoviesView extends AppCompatActivity {
                                 }
                                 movieName.setText(name);
                                 movieGenre.setText(genre);
-                                movieLang.setText(rating);
-                                movieRating.setText(lang);
+                                movieLang.setText(lang);
+                                movieRating.setText(Rating);
                                 movieYear.setText(year);
                             }
                         }
