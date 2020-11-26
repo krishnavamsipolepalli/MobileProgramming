@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".AddMovie">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Add a Movie"
+    android:textSize="30dp"
+    android:textColor="#2196F3"
+    android:layout_marginBottom="40dp"
+    ></TextView>
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/MovieName"
+        android:hint="Movie Name"
+        android:gravity="center"></EditText>
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/MovieLanguage"
+        android:hint="Language"
+        android:gravity="center"
+        android:layout_marginTop="10dp"></EditText>
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/MovieRating"
+        android:hint="Rating /10"
+        android:gravity="center"
+        android:layout_marginTop="10dp"></EditText>
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/MovieDate"
+        android:hint="Release Year"
+        android:gravity="center"
+        android:layout_marginTop="10dp"></EditText>
+    <EditText
+        android:layout_marginTop="10dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/MovieGenre"
+        android:hint="Genre"
+        android:gravity="center"></EditText>
+
+<Button
+    android:layout_marginTop="30dp"
+    android:layout_width="150dp"
+    android:layout_height="50dp"
+    android:id="@+id/sumitBtn"
+    android:text="SUBMIT"
+    ></Button>
+
+</LinearLayout>
